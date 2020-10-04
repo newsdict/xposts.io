@@ -1,0 +1,19 @@
+version: "3.8"
+networks:
+  app-tier:
+    driver: bridge
+services:
+  web:
+    tty: true
+    stdin_open: true
+    container_name: xposts.io
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+    - ./:/var/www/docker
+    working_dir: /var/www/docker
+    ports:
+      - 3000:8080
+    networks:
+      - app-tier

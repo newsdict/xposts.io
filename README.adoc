@@ -1,0 +1,19 @@
+# xposts.io
+
+## commands
+
+``
+# docker/start
+``
+
+``
+#docker/start --build
+``
+
+``
+# start/start -d
+``
+
+``
+# docker/exec
+``

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+if [ "$1" = "rm" ];then
+  shift
+  docker-compose rm -f
+fi
+docker-compose stop
+if [ "$1" = "attach" ]; then
+  docker-compose up -d
+  app_name=$2
+  if [[ ! "$app_name" =~ ^$NAMESPACE ]]; then
+    app_name="${NAMESPACE}_${app_name}"
+  fi
+  docker attach $app_name
+else
+  docker-compose up $@
+fi
